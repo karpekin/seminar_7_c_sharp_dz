@@ -77,22 +77,41 @@
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
+// int[,] array = new int[,]
+// {
+//     { 1, 4, 7, 2 },
+//     { 5, 9, 2, 3 },
+//     { 8, 4, 2, 4 }
+// };
+
+// double[] sum = new  double[array.GetLength(1)];
+// double[] average = new double[array.GetLength(1)];
+   
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//            sum[j] = sum[j] + array[i,j];
+//            average[j] = Math.Round((sum[j] / (array.GetLength(1)-1)),1);
+//         }
+//     }
+// Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join("; ", average)}");
+
+//Второй вариант
 int[,] array = new int[,]
 {
     { 1, 4, 7, 2 },
     { 5, 9, 2, 3 },
     { 8, 4, 2, 4 }
 };
-
-double[] sum = new  double[array.GetLength(1)];
-double[] average = new double[array.GetLength(1)];
    
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(1); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        double sum = 0;
+        for (int j = 0; j < array.GetLength(0); j++)
         {
-            sum[j] = sum[j] + array[i,j];
-           average[j] = Math.Round((sum[j] / (array.GetLength(1)-1)),1);
+        sum = sum + array[j,i];
         }
+        double average = Math.Round((sum/(array.GetLength(1)-1)),1);
+        Console.WriteLine(average);
     }
-Console.WriteLine($"Стреднее арифметическое каждого столбца: {String.Join("; ", average)}");
