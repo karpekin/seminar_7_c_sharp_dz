@@ -36,36 +36,63 @@
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
 
-Console.Write("Введите число строк: ");
-int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число строк: ");
+// int rows = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите число столбцов: ");
-int columns = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число столбцов: ");
+// int columns = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите индекс стоки искомого элемента: ");
-int a = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите индекс стоки искомого элемента: ");
+// int a = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите индекс столбца искомого элемента: ");
-int b = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите индекс столбца искомого элемента: ");
+// int b = Convert.ToInt32(Console.ReadLine());
 
-int [,] array =new  int [rows,columns];
-for (int i = 0; i < array.GetLength(0); i++)
+// int [,] array =new  int [rows,columns];
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//        array[i,j] = new Random().Next(0,10);
+//        Console.Write(array[i,j]+  " ");
+//     }
+//     Console.WriteLine();
+// }
+// Console.WriteLine("___________________");
+// Console.WriteLine();
+
+// if (a < rows && b < columns) 
+// {
+//     Console.Write(array[a,b]);
+// }
+// else
+// {
+//     Console.Write("такого элемента нет");
+// }
+
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+int[,] array = new int[,]
 {
-    for (int j = 0; j < array.GetLength(1); j++)
+    { 1, 4, 7, 2 },
+    { 5, 9, 2, 3 },
+    { 8, 4, 2, 4 }
+};
+
+double[] sum = new  double[array.GetLength(1)];
+double[] average = new double[array.GetLength(1)];
+   
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-       array[i,j] = new Random().Next(0,10);
-       Console.Write(array[i,j]+  " ");
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum[j] = sum[j] + array[i,j];
+           average[j] = Math.Round((sum[j] / (array.GetLength(1)-1)),1);
+        }
     }
-    Console.WriteLine();
-}
-Console.WriteLine("___________________");
-Console.WriteLine();
-
-if (a < rows && b < columns) 
-{
-    Console.Write(array[a,b]);
-}
-else
-{
-    Console.Write("такого элемента нет");
-}
+Console.WriteLine($"Стреднее арифметическое каждого столбца: {String.Join("; ", average)}");
