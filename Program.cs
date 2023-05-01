@@ -92,26 +92,135 @@
 //         for (int j = 0; j < array.GetLength(1); j++)
 //         {
 //            sum[j] = sum[j] + array[i,j];
-//            average[j] = Math.Round((sum[j] / (array.GetLength(1)-1)),1);
+//            average[j] = Math.Round((sum[j] / (array.GetLength(0))),1);
 //         }
 //     }
 // Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join("; ", average)}");
 
 //Второй вариант
-int[,] array = new int[,]
-{
-    { 1, 4, 7, 2 },
-    { 5, 9, 2, 3 },
-    { 8, 4, 2, 4 }
-};
+// int[,] array = new int[,]
+// {
+//     { 1, 4, 7, 2 },
+//     { 5, 9, 2, 3 },
+//     { 8, 4, 2, 4 }
+// };
    
-    for (int i = 0; i < array.GetLength(1); i++)
-    {
-        double sum = 0;
-        for (int j = 0; j < array.GetLength(0); j++)
+//     for (int i = 0; i < array.GetLength(1); i++)
+//     {
+//         double sum = 0;
+//         for (int j = 0; j < array.GetLength(0); j++)
+//         {
+//         sum = sum + array[j,i];
+//         }
+//         double average = Math.Round((sum/(array.GetLength(0))),1);
+//         Console.WriteLine(average);
+//     }
+
+//Третий вариант
+
+// int[,] array = new int[,]
+// {
+//     { 1, 4, 7, 2 },
+//     { 5, 9, 2, 3 },
+//     { 8, 4, 2, 4 }
+// };
+// double sum0 = 0;
+// double sum1 = 0;
+// double sum2 = 0;
+// double sum3 = 0;
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//             if (j == 0) sum0 = sum0 + array[i,j];
+//             if (j == 1) sum1 = sum1 + array[i,j];
+//             if (j == 2) sum2 = sum2 + array[i,j];
+//             if (j == 3) sum3 = sum3 + array[i,j];
+//     }
+// }
+// double average0 = Math.Round((sum0/(array.GetLength(0))),1);
+// double average1 = Math.Round((sum1/(array.GetLength(0))),1);
+// double average2 = Math.Round((sum2/(array.GetLength(0))),1);
+// double average3 = Math.Round((sum3/(array.GetLength(0))),1);
+
+// Console.WriteLine(average0);
+// Console.WriteLine(average1);
+// Console.WriteLine(average2);
+// Console.WriteLine(average3);
+
+//Четвертый вариант
+// int [,] array = {{1,4,7,2},
+//                  {5,9,2,3},
+//                  {8,4,2,4}};
+// int i = 0, j = 0;
+// double sum0 = 0, sum1 = 0, sum2 = 0, sum3 = 0;
+// for (int k = 0; k < array.GetLength(0); k++)
+// {
+//         if (j == 0) 
+//         {
+//             sum0 += array[i,j];
+//             j++;
+//         }
+//         if (j == 1) 
+//         {
+//             sum1 += array[i,j];
+//             j++;
+//         }
+//         if (j == 2) 
+//         {
+//             sum2 += array[i,j];
+//             j++;
+//         }
+//         if (j == 3) 
+//         {
+//             sum3 += array[i,j];
+//             j = 0;
+//             i++;
+//         }
+// }
+// Console.WriteLine(sum0/array.GetLength(0));
+// Console.WriteLine(sum1/array.GetLength(0));
+// Console.WriteLine(sum2/array.GetLength(0));
+// Console.WriteLine(sum3/array.GetLength(0));
+
+//Пятый вариант
+int [,] array =  {{1,4,7,2},
+                  {5,9,2,3},
+                  {8,4,2,4}};
+int i = 0, j = 0;
+double sum0 = 0, sum1 = 0, sum2 = 0, sum3 = 0;
+for (int k = 0; k < array.GetLength(0)*array.GetLength(1); k++)
+{
+        switch (j)
         {
-        sum = sum + array[j,i];
-        }
-        double average = Math.Round((sum/(array.GetLength(1)-1)),1);
-        Console.WriteLine(average);
-    }
+            case 0:
+            {
+                sum0 += array[i,j];
+                j++;
+                break;
+            }
+            case 1:
+            {
+                sum1 += array[i,j];
+                j++;
+                break;
+            }
+            case 2:
+            {
+                sum2 += array[i,j];
+                j++;
+                break;
+            }
+            case 3:
+            {
+                sum3 += array[i,j];
+                j = 0;
+                i++;
+                break;
+            }
+        }    
+}
+Console.WriteLine(sum0/array.GetLength(0));
+Console.WriteLine(sum1/array.GetLength(0));
+Console.WriteLine(sum2/array.GetLength(0));
+Console.WriteLine(sum3/array.GetLength(0));
